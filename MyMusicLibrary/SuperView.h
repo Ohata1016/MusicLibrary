@@ -1,13 +1,13 @@
 //
-//  InitBottun.h
+//  SuperView.h
 //  MyMusicLibrary
 //
-//  Created by Ohata Takashi on 2013/05/23.
+//  Created by Ohata Takashi on 2013/06/21.
 //  Copyright (c) 2013年 Ohata Takashi. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface InitBottun : UIImageView
+@interface SuperView : UIView
 
 @end
