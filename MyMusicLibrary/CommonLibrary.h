@@ -9,6 +9,9 @@
 #ifndef MyMusicLibrary_CommonLibrary_h
 #define MyMusicLibrary_CommonLibrary_h
 
-
+#define MAXWIDTH 1600
+#define MAXHEIGHT 1200
+#define DEFAULTSIZE 100
+#define ALLDELETERSIZE 50
 
 #endif

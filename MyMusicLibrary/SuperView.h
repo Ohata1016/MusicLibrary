@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
+#import "EffectSoundBox.h"
 
-@interface SuperView : UIView
+@interface SuperView : UIImageView<NSCoding>
 
+-(NSMutableArray *)getMusicSaveData;
+-(int)getHaveRedFrame;
+-(void)updateHaveRedFrame:(int)tag;
+-(int)getHavePlayingFrame;
+-(void)updateHavePlayingFrame:(int)tag;
+-(void)allDelete;
+-(void)playSelectSound;
+-(void)playPanActionSound;
+-(void)playDeleteSound;
+@property MPMusicPlayerController *player;
 @end

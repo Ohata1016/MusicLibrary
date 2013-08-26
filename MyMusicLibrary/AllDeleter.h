@@ -7,6 +7,8 @@
 //
 
 #import "Deleter.h"
+#import "MyScrollView.h"
+#import "SuperView.h"
 
 @interface AllDeleter : Deleter
 

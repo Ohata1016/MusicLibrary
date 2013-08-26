@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "MusicImage.h"
 
-@interface Deleter : UIImageView{
-    UITapGestureRecognizer *singleFingerDTap;
-}
+@interface Deleter : UIImageView
 
 @end

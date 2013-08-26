@@ -9,10 +9,14 @@
 #import "Deleter.h"
 
 @implementation Deleter
-
+{
+        UITapGestureRecognizer *singleFingerDTap;
+}
 - (id)initWithFrame:(CGRect)frame
 {
+    NSLog(@"addDeleter");
     self = [super initWithFrame:frame];
+    
     if (self) {
         // Initialization code
         UIImage *img = [UIImage imageNamed:@"deleter.png"];
@@ -42,16 +46,14 @@
     NSLog(@"Deleter gesture called");
     //大本のviewをとっとく
     MusicImage *img = (MusicImage*)self.superview;
+    NSLog(@"img getsuperview:%@",[img getSuperview]);
+    [[img getSuperview] playDeleteSound];
+
     if(sender.state == UIGestureRecognizerStateEnded){
         [img deleteView];
     }
-}
 
-- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
-{
-    NSLog(@"deleter touched");
 }
-
 
 
 /*

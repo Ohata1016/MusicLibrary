@@ -9,47 +9,33 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
+#import "MusicSaveData.h"
+#import "CommonLibrary.h"
+#import "SuperView.h"
+
+#define STARTMUSICTAGNUMBER 6
 
 
-#define MAXWIDTH 1600
-#define MAXHEIGHT 900
 
-@interface MusicImage : UIImageView<UIScrollViewDelegate,UITextViewDelegate>{
-    UITapGestureRecognizer *singleFingerDTap;
-    UILongPressGestureRecognizer *longPressGesture;
-    UIPinchGestureRecognizer *pinchGesture;
-    UITapGestureRecognizer *doubleTapGesture;
-    UITapGestureRecognizer *tripleTapGesture;
-    UISwipeGestureRecognizer *rightSwipeGesture;
-    UISwipeGestureRecognizer *leftSwipeGesture;
-    UISwipeGestureRecognizer *upSwipeGesture;
-    UISwipeGestureRecognizer *downSwipeGesture;
-    UIPanGestureRecognizer *panGesture;
-    NSNotificationCenter *notificationCenter;
-    
-    
-    CGAffineTransform currentTrans;
-    
-    CGPoint touchLocation;
-    MPMediaQuery *myMusic;
-    NSMutableArray *musicArray;
-    NSMutableArray *nowPlayingItem;
-    
-    UITextField *textField;
-    BOOL playing;
-}
+@interface MusicImage : UIImageView<UIScrollViewDelegate,UITextViewDelegate,NSCoding>
+
+
 typedef enum imageLabel:NSUInteger{
     IMAGE,
     FRAME,
-    SCALLER,
-    TEXT,
+    SONGLABEL,
+    ALBUMLABEL,
     NOWPLAYINGITEM,
     PLAYINGFRAME,
     DELETER
 }imageLabel;
-
+@property     NSString *albumName;
 -(void)addMusic:(NSMutableArray *)music;
 -(void)deleteView;
 -(void)shuffleMusic;
-@property MPMusicPlayerController *player;
+-(void)serializer;
+-(void)changeImage;
+-(void)makeAlbumController;
+-(SuperView *)getSuperview;
+
 @end

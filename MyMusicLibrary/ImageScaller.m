@@ -9,6 +9,10 @@
 #import "ImageScaller.h"
 
 @implementation ImageScaller
+{
+    CGPoint touchLocation;
+    CGRect superInitRect;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -47,7 +51,7 @@
     
     self.superview.frame = newImageFrame;
     [self.superview viewWithTag:self.superview.tag+FRAME].frame = newLabelFrame;
-    [self.superview viewWithTag:self.superview.tag+TEXT].frame = newLabelFrame;
+    [self.superview viewWithTag:self.superview.tag+SONGLABEL].frame = newLabelFrame;
     [self.superview viewWithTag:self.superview.tag+PLAYINGFRAME].frame = newLabelFrame;
 
     [self.superview viewWithTag:self.superview.tag+DELETER].frame = newDeleterFrame;
@@ -55,6 +59,7 @@
     //   [self checkPosition:frame var:var];
     [self setFrame:frame];
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

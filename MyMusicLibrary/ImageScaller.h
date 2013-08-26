@@ -10,9 +10,6 @@
 #import "MusicImage.h"
 
 
-@interface ImageScaller : UIImageView{
-    CGPoint touchLocation;
-    CGRect superInitRect;
-}
+@interface ImageScaller : UIImageView
 
 @end

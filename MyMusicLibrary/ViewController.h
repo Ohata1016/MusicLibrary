@@ -8,17 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
-
+#import <AudioToolbox/AudioToolbox.h>
+#import "APPDelegate.h"
 #import "MyScrollView.h"
+#import "CommonLibrary.h"
 
-#define MAXWIDTH 1600
-#define MAXHEIGHT 900
-#define DEFAULTSIZE 100
+#define OPENLIBRARYSOUNDNUM 1100//iphoneシステムサウンドの番号
+#define CLOSELIBRARYSOUNDNUM 1101
 
-@interface ViewController : UIViewController<UIScrollViewDelegate,NSCoding>{
-    UITapGestureRecognizer *singleFingerDTap;
-    MyScrollView *scroller;
-    int imageTag;
+@interface ViewController : UIViewController<UIScrollViewDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NSCoding,MyScrollViewDelegate>
 
-}
+@property (nonatomic,strong)MyScrollView *scroller;
+@property (nonatomic,strong)ViewController *prevController;
+@property (nonatomic,strong)NSMutableArray *albumMusicArray;
+@property  int imageTag;
+-(void)readSaveData;
+-(void)addMusicImage:(NSMutableArray *)array;
+-(void)setCanvasViewControllerNumber:(int)number;
 @end

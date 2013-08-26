@@ -10,13 +10,16 @@
 
 @implementation AllDeleter
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+
+
+-(void)handleSingleTap:(UIGestureRecognizer *)sender{
+    NSLog(@"AllDeleter gesture called");
+    
+    SuperView *scr = (SuperView *)[self superview];
+    if(sender.state == UIGestureRecognizerStateEnded){
+        [scr allDelete];
     }
-    return self;
+    
 }
 
 /*

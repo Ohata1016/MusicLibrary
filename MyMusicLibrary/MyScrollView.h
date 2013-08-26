@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <MediaPlayer/MediaPlayer.h>
 #import "MusicImage.h"
-#import "MyScrollView.h"
-
-#define MAXWIDTH 1600
-#define MAXHEIGHT 900
-#define DEFAULTSIZE 100
-@interface MyScrollView : UIScrollView<UIScrollViewDelegate>{
-    UIView *initView;//大本のview    
-}
-
+#import "SuperView.h"
+@protocol MyScrollViewDelegate<NSObject>
+-(void)changeViewController:(NSMutableArray *)cnt;
+@end
+@interface MyScrollView : UIScrollView<NSCoding>
+@property (nonatomic, assign) id<MyScrollViewDelegate> delegate;
+// デリゲートメソッドを呼ぶメソッド
+- (void)callChangeViewController:(NSMutableArray *)cnt;
 -(void)addMusicImage:(MusicImage*)image;
--(UIView *)getSubview;
+-(SuperView *)getSubview;
+-(void)addAllDeleter;
 @end

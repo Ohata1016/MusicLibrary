@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MusicSaveData : NSObject
+
+@interface MusicSaveData : NSObject<NSCoding>
+@property (nonatomic)CGRect bounds;
+@property (nonatomic, retain)NSMutableArray *musicArray;
+@property (nonatomic,strong) NSString *albumName;
 
 @end

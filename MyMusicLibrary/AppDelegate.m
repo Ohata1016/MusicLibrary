@@ -11,17 +11,69 @@
 #import "ViewController.h"
 
 @implementation AppDelegate
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
-    return YES;
+    int existViewControllerNumber;
+    //現状、viewControllerにtag番号を割り振っている
+    //tag番号を使ったファイルにシリアライズしている
+    //tag番号が有限になるため、プロパティにtag以外の個体識別のための属性を追加する予定
+    
 }
 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions//application開始時に行われる
+{
+    
+    self.canvasViewControllerList = [[NSMutableArray alloc] initWithCapacity:1];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.viewController = [[ViewController alloc] init];
+    
+    self.window.rootViewController = self.viewController;
+    
+    self.viewController.view.tag = 1;
+    existViewControllerNumber = 1;
+    [self.viewController setCanvasViewControllerNumber:existViewControllerNumber-1];
+    
+    
+    [self.viewController readSaveData];
+    
+    [self.canvasViewControllerList addObject:self.viewController];
+    
+    [self.window addSubview:self.viewController.view];
+    
+    // 初期状態としてViewController1を前面に表示する。
+    [self.window bringSubviewToFront:self.viewController.view];
+    
+    [self.window makeKeyAndVisible];
+    return YES;
+    
+}
+
+-(void)addController{
+
+    ViewController *cnt = [[ViewController alloc] init];
+    existViewControllerNumber++;
+    
+    [self.viewController setCanvasViewControllerNumber:existViewControllerNumber-1];
+    
+    cnt.view.tag = existViewControllerNumber;
+
+    [cnt readSaveData];
+    
+    [self.canvasViewControllerList addObject:cnt];
+    self.window.rootViewController = cnt;
+    [self.window addSubview:cnt.view];
+    [self.window bringSubviewToFront:cnt.view];
+    [self.window makeKeyAndVisible];
+}
+
+-(void)addController:(ViewController *)cnt{//アルバムのviewControllerに切り替えるときに使う    
+    self.window.rootViewController = cnt;
+    [self.window addSubview:cnt.view];
+    [self.window bringSubviewToFront:cnt.view];
+    [self.window makeKeyAndVisible];
+    
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -37,6 +89,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
